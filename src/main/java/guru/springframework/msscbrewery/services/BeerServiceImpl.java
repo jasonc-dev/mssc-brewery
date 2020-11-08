@@ -1,13 +1,12 @@
 package guru.springframework.msscbrewery.services;
 
 import guru.springframework.msscbrewery.web.model.BeerDto;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
-/**
- * Created by jt on 2019-04-20.
- */
+@Slf4j
 @Service
 public class BeerServiceImpl implements BeerService {
     @Override
@@ -16,5 +15,21 @@ public class BeerServiceImpl implements BeerService {
                 .beerName("Galaxy Cat")
                 .beerStyle("Pale Ale")
                 .build();
+    }
+
+    @Override
+    public BeerDto saveNewBeer(BeerDto beerDto) {
+        return BeerDto.builder().id(UUID.randomUUID())
+                .build();
+    }
+
+    @Override
+    public void updateBeerById(UUID beerId, BeerDto beerDto) {
+        log.debug("updating a beer");
+    }
+
+    @Override
+    public void deleteBeerById(UUID beerId) {
+        log.debug("Deleting a beer");
     }
 }
